@@ -3,13 +3,14 @@
 <nta>
 	<declaration>// Place global declarations here.
 int AWerkstuecke, BWerkstuecke, CWerkstuecke;
-int werkstueckeMax=3;
+int werkstueckeMax=10;
 int werkstueckeProd=0;
-clock x;
+
 </declaration>
 	<template>
 		<name>Fertigungsstation</name>
 		<parameter>int &amp;werkstuecke</parameter>
+		<declaration>clock x;</declaration>
 		<location id="id0" x="0" y="0">
 			<name x="-85" y="-34">produzierend</name>
 			<label kind="invariant" x="-42" y="17">x&lt;=50</label>
@@ -19,6 +20,7 @@ clock x;
 		</location>
 		<location id="id2" x="-221" y="0">
 			<name x="-246" y="-34">initialize</name>
+			<committed/>
 		</location>
 		<init ref="id2"/>
 		<transition>
@@ -51,17 +53,38 @@ x:=0</label>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="guard" x="119" y="-25">AWerkstuecke&gt;0</label>
-			<label kind="assignment" x="119" y="0">AWerkstuecke--</label>
+			<label kind="guard" x="119" y="-25">BWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="0">BWerkstuecke--</label>
 			<nail x="102" y="34"/>
 			<nail x="102" y="-34"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="119" y="68">CWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="93">CWerkstuecke--</label>
+			<nail x="102" y="127"/>
+			<nail x="102" y="59"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="119" y="-118">AWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="-93">AWerkstuecke--</label>
+			<nail x="102" y="-59"/>
+			<nail x="102" y="-127"/>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
 fertigungsstationA = Fertigungsstation(AWerkstuecke);
+fertigungsstationB = Fertigungsstation(BWerkstuecke);
+fertigungsstationC = Fertigungsstation(CWerkstuecke);
 scheduler = SchedulerDummy();
 // List one or more processes to be composed into a system.
-system fertigungsstationA, scheduler;
+system fertigungsstationA,
+    fertigungsstationB,
+    fertigungsstationC,
+    scheduler;
     </system>
 	<queries>
 		<query>
