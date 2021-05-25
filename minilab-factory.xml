@@ -19,6 +19,7 @@ chan einsAnA, einsAnB, einsAnC, zweiAnA, zweiAnB, zweiAnC, dreiAnA, dreiAnB, dre
 chan belegeA, belegeB, belegeC, befreieA, befreieB, befreieC;
 chan activate1, activate2, activate3;
 chan alpha1, beta1, gamma1, alphaZ1, betaZ1, gammaZ1, alpha2, beta2, gamma2, alphaZ2, betaZ2, gammaZ2, alpha3, beta3, gamma3, alphaZ3, betaZ3, gammaZ3;
+
 // Fertigungsstation
 int AWerkstuecke, BWerkstuecke, CWerkstuecke;
 int werkstueckeMax=10;
@@ -245,240 +246,240 @@ x:=0</label>
 			<nail x="102" y="-127"/>
 		</transition>
 	</template>
-  <template>
+	<template>
 		<name x="5" y="5">Roboter</name>
 		<parameter>int[0,2] &amp;act, int[0,2] &amp;pos, clock &amp;r, chan &amp;anA, chan &amp;anB, chan &amp;anC, chan &amp;alpha, chan &amp;beta, chan &amp;gamma, chan &amp;alphaZ, chan &amp;betaZ, chan &amp;gammaZ, chan &amp;activate</parameter>
 		<declaration>// Place local declarations here.</declaration>
-		<location id="id0" x="-348" y="-221">
+		<location id="id16" x="-348" y="-221">
 			<name x="-408" y="-255">standby_A</name>
 		</location>
-		<location id="id1" x="-595" y="-221">
+		<location id="id17" x="-595" y="-221">
 			<name x="-654" y="-263">leer_fahrend_zuC</name>
 			<label kind="invariant" x="-605" y="-204">r&lt;=15</label>
 		</location>
-		<location id="id2" x="-595" y="-42">
+		<location id="id18" x="-595" y="-42">
 			<name x="-605" y="-76">leer_fahrend_zuB</name>
 			<label kind="invariant" x="-605" y="-25">r&lt;=15</label>
 		</location>
-		<location id="id3" x="-365" y="119">
+		<location id="id19" x="-365" y="119">
 			<name x="-375" y="85">standby_C</name>
 		</location>
-		<location id="id4" x="-365" y="-51">
+		<location id="id20" x="-365" y="-51">
 			<name x="-375" y="-85">standby_B</name>
 		</location>
-		<location id="id5" x="-595" y="127">
+		<location id="id21" x="-595" y="127">
 			<name x="-637" y="93">leer_fahrend_zuA</name>
 			<label kind="invariant" x="-605" y="144">r&lt;=15</label>
 		</location>
-		<location id="id6" x="-153" y="119">
+		<location id="id22" x="-153" y="119">
 			<name x="-255" y="76">einreihen_C_Zielwahl</name>
 			<urgent/>
 		</location>
-		<location id="id7" x="-153" y="-51">
+		<location id="id23" x="-153" y="-51">
 			<name x="-221" y="-85">einreihen_B_Zielwahl</name>
 			<urgent/>
 		</location>
-		<location id="id8" x="-153" y="-221">
+		<location id="id24" x="-153" y="-221">
 			<name x="-238" y="-272">einreihen_A_Zielwahl</name>
 			<urgent/>
 		</location>
-		<location id="id9" x="-25" y="-280">
+		<location id="id25" x="-25" y="-280">
 			<name x="-119" y="-314">einreihen_A_ZielB</name>
 			<label kind="invariant" x="-35" y="-263">r&lt;=5</label>
 		</location>
-		<location id="id10" x="-34" y="-187">
+		<location id="id26" x="-34" y="-187">
 			<name x="-85" y="-221">einreihen_A_ZielC</name>
 			<label kind="invariant" x="-44" y="-170">r&lt;=5</label>
 		</location>
-		<location id="id11" x="-42" y="-93">
+		<location id="id27" x="-42" y="-93">
 			<name x="-110" y="-127">einreihen_B_ZielA</name>
 			<label kind="invariant" x="-52" y="-76">r&lt;=5</label>
 		</location>
-		<location id="id12" x="-42" y="-8">
+		<location id="id28" x="-42" y="-8">
 			<name x="-93" y="-42">einreihen_B_ZielC</name>
 			<label kind="invariant" x="-59" y="0">r&lt;=5</label>
 		</location>
-		<location id="id13" x="-42" y="76">
+		<location id="id29" x="-42" y="76">
 			<name x="-102" y="42">einreihen_C_ZielA</name>
 			<label kind="invariant" x="-52" y="93">r&lt;=5</label>
 		</location>
-		<location id="id14" x="-42" y="161">
+		<location id="id30" x="-42" y="161">
 			<name x="-102" y="127">einreihen_C_ZielB</name>
 			<label kind="invariant" x="-52" y="178">r&lt;=5</label>
 		</location>
-		<location id="id15" x="93" y="-280">
+		<location id="id31" x="93" y="-280">
 			<name x="34" y="-314">leer_inQueue_beiA_ZielB</name>
 		</location>
-		<location id="id16" x="102" y="-187">
+		<location id="id32" x="102" y="-187">
 			<name x="59" y="-221">leer_inQueue_beiA_ZielC</name>
 		</location>
-		<location id="id17" x="102" y="-93">
+		<location id="id33" x="102" y="-93">
 			<name x="17" y="-85">leer_inQueue_beiB_ZielA</name>
 		</location>
-		<location id="id18" x="102" y="-8">
+		<location id="id34" x="102" y="-8">
 			<name x="17" y="-59">leer_inQueue_beiB_ZielC</name>
 		</location>
-		<location id="id19" x="102" y="76">
+		<location id="id35" x="102" y="76">
 			<name x="34" y="42">leer_inQueue_beiC_ZielA</name>
 		</location>
-		<location id="id20" x="102" y="161">
+		<location id="id36" x="102" y="161">
 			<name x="17" y="110">leer_inQueue_beiC_ZielB</name>
 		</location>
-		<location id="id21" x="357" y="-280">
+		<location id="id37" x="357" y="-280">
 			<name x="306" y="-314">wird_beladen_beiA_ZielB</name>
 			<label kind="invariant" x="347" y="-263">r&lt;=10</label>
 		</location>
-		<location id="id22" x="357" y="-187">
+		<location id="id38" x="357" y="-187">
 			<name x="280" y="-221">wird_beladen_beiA_ZielC</name>
 			<label kind="invariant" x="347" y="-170">r&lt;=10</label>
 		</location>
-		<location id="id23" x="357" y="-93">
+		<location id="id39" x="357" y="-93">
 			<name x="280" y="-127">wird_beladen_beiB_ZielA</name>
 			<label kind="invariant" x="347" y="-76">r&lt;=10</label>
 		</location>
-		<location id="id24" x="357" y="-8">
+		<location id="id40" x="357" y="-8">
 			<name x="263" y="-51">wird_beladen_beiB_ZielC</name>
 			<label kind="invariant" x="331" y="8">r&lt;=10</label>
 		</location>
-		<location id="id25" x="365" y="76">
+		<location id="id41" x="365" y="76">
 			<name x="289" y="51">wird_beladen_beiC_ZielA</name>
 			<label kind="invariant" x="355" y="93">r&lt;=10</label>
 		</location>
-		<location id="id26" x="365" y="161">
+		<location id="id42" x="365" y="161">
 			<name x="271" y="204">wird_beladen_beiC_ZielB</name>
 			<label kind="invariant" x="355" y="178">r&lt;=10</label>
 		</location>
-		<location id="id27" x="510" y="-187">
+		<location id="id43" x="510" y="-187">
 			<name x="459" y="-221">voll_fahrend_zuC</name>
 			<label kind="invariant" x="500" y="-170">r&lt;=25</label>
 		</location>
-		<location id="id28" x="510" y="-93">
+		<location id="id44" x="510" y="-93">
 			<name x="500" y="-127">voll_fahrend_zuA</name>
 			<label kind="invariant" x="500" y="-76">r&lt;=25</label>
 		</location>
-		<location id="id29" x="510" y="110">
+		<location id="id45" x="510" y="110">
 			<name x="442" y="76">voll_fahrend_zuB</name>
 			<label kind="invariant" x="500" y="127">r&lt;=25</label>
 		</location>
-		<location id="id30" x="637" y="-187">
+		<location id="id46" x="637" y="-187">
 			<name x="569" y="-238">voll_inQueue_beiC</name>
 		</location>
-		<location id="id31" x="637" y="-93">
+		<location id="id47" x="637" y="-93">
 			<name x="577" y="-144">voll_inQueue_beiA</name>
 		</location>
-		<location id="id32" x="646" y="110">
+		<location id="id48" x="646" y="110">
 			<name x="569" y="76">voll_inQueue_beiB</name>
 		</location>
-		<location id="id33" x="884" y="-187">
+		<location id="id49" x="884" y="-187">
 			<name x="825" y="-221">wird_entladen_beiC</name>
 			<label kind="invariant" x="874" y="-170">r&lt;=10</label>
 		</location>
-		<location id="id34" x="884" y="-93">
+		<location id="id50" x="884" y="-93">
 			<name x="808" y="-127">wird_entladen_beiA</name>
 			<label kind="invariant" x="874" y="-76">r&lt;=10</label>
 		</location>
-		<location id="id35" x="884" y="110">
+		<location id="id51" x="884" y="110">
 			<name x="850" y="76">wird_entladen_beiB</name>
 			<label kind="invariant" x="884" y="102">r&lt;=10</label>
 		</location>
-		<location id="id36" x="926" y="-357">
+		<location id="id52" x="926" y="-357">
 			<name x="916" y="-391">wird_direkt_beladen_beiA</name>
 			<urgent/>
 		</location>
-		<location id="id37" x="909" y="306">
+		<location id="id53" x="909" y="306">
 			<name x="850" y="263">wird_direkt_beladen_beiB</name>
 			<urgent/>
 		</location>
-		<location id="id38" x="688" y="280">
+		<location id="id54" x="688" y="280">
 			<name x="595" y="246">wird_direkt_beladen_beiC</name>
 			<urgent/>
 		</location>
-		<location id="id39" x="221" y="-280">
+		<location id="id55" x="221" y="-280">
 			<name x="161" y="-331">A_belegen_beladen_ZielB</name>
 			<committed/>
 		</location>
-		<location id="id40" x="221" y="-187">
+		<location id="id56" x="221" y="-187">
 			<name x="144" y="-238">A_belegen_beladen_ZielC</name>
 			<committed/>
 		</location>
-		<location id="id41" x="229" y="-93">
+		<location id="id57" x="229" y="-93">
 			<name x="119" y="-144">B_belegen_beladen_ZielA</name>
 			<committed/>
 		</location>
-		<location id="id42" x="229" y="-8">
+		<location id="id58" x="229" y="-8">
 			<name x="136" y="-42">B_belegen_beladen_ZielC</name>
 			<committed/>
 		</location>
-		<location id="id43" x="229" y="76">
+		<location id="id59" x="229" y="76">
 			<name x="144" y="93">C_belegen_beladen_ZielA</name>
 			<committed/>
 		</location>
-		<location id="id44" x="229" y="161">
+		<location id="id60" x="229" y="161">
 			<name x="161" y="127">C_belegen_beladen_ZielB</name>
 			<committed/>
 		</location>
-		<location id="id45" x="739" y="-187">
+		<location id="id61" x="739" y="-187">
 			<name x="680" y="-221">C_belegen_entladen</name>
 			<committed/>
 		</location>
-		<location id="id46" x="756" y="-93">
+		<location id="id62" x="756" y="-93">
 			<name x="663" y="-127">A_belegen_entladen</name>
 			<committed/>
 		</location>
-		<location id="id47" x="748" y="110">
+		<location id="id63" x="748" y="110">
 			<name x="697" y="76">B_belegen_entladen</name>
 			<committed/>
 		</location>
-		<init ref="id0"/>
+		<init ref="id16"/>
 		<transition>
-			<source ref="id45"/>
-			<target ref="id33"/>
+			<source ref="id61"/>
+			<target ref="id49"/>
 			<label kind="synchronisation" x="757" y="-195">belegeC!</label>
 		</transition>
 		<transition>
-			<source ref="id46"/>
-			<target ref="id34"/>
+			<source ref="id62"/>
+			<target ref="id50"/>
 			<label kind="synchronisation" x="791" y="-97">belegeA!</label>
 			<nail x="773" y="-93"/>
 		</transition>
 		<transition>
-			<source ref="id47"/>
-			<target ref="id35"/>
+			<source ref="id63"/>
+			<target ref="id51"/>
 			<label kind="synchronisation" x="782" y="102">belegeB!</label>
 		</transition>
 		<transition>
-			<source ref="id44"/>
-			<target ref="id26"/>
+			<source ref="id60"/>
+			<target ref="id42"/>
 			<label kind="synchronisation" x="247" y="144">belegeC!</label>
 		</transition>
 		<transition>
-			<source ref="id43"/>
-			<target ref="id25"/>
+			<source ref="id59"/>
+			<target ref="id41"/>
 			<label kind="synchronisation" x="247" y="59">belegeC!</label>
 		</transition>
 		<transition>
-			<source ref="id42"/>
-			<target ref="id24"/>
+			<source ref="id58"/>
+			<target ref="id40"/>
 			<label kind="synchronisation" x="247" y="-25">belegeB!</label>
 		</transition>
 		<transition>
-			<source ref="id41"/>
-			<target ref="id23"/>
+			<source ref="id57"/>
+			<target ref="id39"/>
 			<label kind="synchronisation" x="247" y="-110">belegeB!</label>
 		</transition>
 		<transition>
-			<source ref="id40"/>
-			<target ref="id22"/>
+			<source ref="id56"/>
+			<target ref="id38"/>
 			<label kind="synchronisation" x="239" y="-204">belegeA!</label>
 		</transition>
 		<transition>
-			<source ref="id39"/>
-			<target ref="id21"/>
+			<source ref="id55"/>
+			<target ref="id37"/>
 			<label kind="synchronisation" x="246" y="-297">belegeA!</label>
 		</transition>
 		<transition>
-			<source ref="id35"/>
-			<target ref="id4"/>
+			<source ref="id51"/>
+			<target ref="id20"/>
 			<label kind="guard" x="450" y="314">r&gt;=10</label>
 			<label kind="synchronisation" x="509" y="314">befreieB!</label>
 			<label kind="assignment" x="577" y="314">act:=0</label>
@@ -486,8 +487,8 @@ x:=0</label>
 			<nail x="-272" y="314"/>
 		</transition>
 		<transition>
-			<source ref="id34"/>
-			<target ref="id0"/>
+			<source ref="id50"/>
+			<target ref="id16"/>
 			<label kind="guard" x="323" y="-365">r&gt;=10</label>
 			<label kind="synchronisation" x="314" y="-382">befreieA!</label>
 			<label kind="assignment" x="323" y="-357">act:=0</label>
@@ -495,8 +496,8 @@ x:=0</label>
 			<nail x="-357" y="-357"/>
 		</transition>
 		<transition>
-			<source ref="id33"/>
-			<target ref="id3"/>
+			<source ref="id49"/>
+			<target ref="id19"/>
 			<label kind="guard" x="-466" y="-433">r&gt;=10</label>
 			<label kind="synchronisation" x="-466" y="-416">befreieC!</label>
 			<label kind="assignment" x="-466" y="-399">act:=0</label>
@@ -505,61 +506,61 @@ x:=0</label>
 			<nail x="-484" y="85"/>
 		</transition>
 		<transition>
-			<source ref="id33"/>
-			<target ref="id38"/>
+			<source ref="id49"/>
+			<target ref="id54"/>
 			<label kind="guard" x="859" y="-55">r&gt;=10</label>
 			<label kind="assignment" x="859" y="-21">act:=2</label>
 			<nail x="943" y="144"/>
 		</transition>
 		<transition>
-			<source ref="id35"/>
-			<target ref="id37"/>
+			<source ref="id51"/>
+			<target ref="id53"/>
 			<label kind="guard" x="867" y="204">r&gt;=10</label>
 			<label kind="assignment" x="867" y="221">act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id34"/>
-			<target ref="id36"/>
+			<source ref="id50"/>
+			<target ref="id52"/>
 			<label kind="guard" x="859" y="-259">r&gt;=10</label>
 			<label kind="assignment" x="867" y="-238">act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id36"/>
-			<target ref="id22"/>
+			<source ref="id52"/>
+			<target ref="id38"/>
 			<label kind="assignment" x="586" y="-280">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id36"/>
-			<target ref="id21"/>
+			<source ref="id52"/>
+			<target ref="id37"/>
 			<label kind="assignment" x="586" y="-331">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id37"/>
-			<target ref="id24"/>
+			<source ref="id53"/>
+			<target ref="id40"/>
 			<label kind="assignment" x="578" y="17">r:=0</label>
 			<nail x="782" y="297"/>
 			<nail x="722" y="34"/>
 		</transition>
 		<transition>
-			<source ref="id37"/>
-			<target ref="id23"/>
+			<source ref="id53"/>
+			<target ref="id39"/>
 			<label kind="assignment" x="629" y="-34">r:=0</label>
 			<nail x="790" y="297"/>
 			<nail x="748" y="17"/>
 		</transition>
 		<transition>
-			<source ref="id38"/>
-			<target ref="id26"/>
+			<source ref="id54"/>
+			<target ref="id42"/>
 			<label kind="assignment" x="476" y="212">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id38"/>
-			<target ref="id25"/>
+			<source ref="id54"/>
+			<target ref="id41"/>
 			<label kind="assignment" x="527" y="170">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id16"/>
+			<source ref="id21"/>
+			<target ref="id32"/>
 			<label kind="guard" x="-697" y="93">r&gt;=15</label>
 			<label kind="synchronisation" x="-688" y="110">anA!</label>
 			<label kind="assignment" x="-687" y="127">pos:=0</label>
@@ -568,8 +569,8 @@ x:=0</label>
 			<nail x="102" y="-136"/>
 		</transition>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id15"/>
+			<source ref="id21"/>
+			<target ref="id31"/>
 			<label kind="guard" x="-620" y="-348">r&gt;=15</label>
 			<label kind="synchronisation" x="-612" y="-314">anA!</label>
 			<label kind="assignment" x="-620" y="-331">pos:=0</label>
@@ -578,8 +579,8 @@ x:=0</label>
 			<nail x="93" y="-340"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
-			<target ref="id18"/>
+			<source ref="id18"/>
+			<target ref="id34"/>
 			<label kind="guard" x="-663" y="-17">r&gt;=15</label>
 			<label kind="synchronisation" x="-662" y="-50">anB!</label>
 			<label kind="assignment" x="-654" y="0">pos:=1</label>
@@ -588,8 +589,8 @@ x:=0</label>
 			<nail x="102" y="17"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
-			<target ref="id17"/>
+			<source ref="id18"/>
+			<target ref="id33"/>
 			<label kind="guard" x="-671" y="-119">r&gt;=15</label>
 			<label kind="synchronisation" x="-671" y="-93">anB!</label>
 			<label kind="assignment" x="-671" y="-76">pos:=1</label>
@@ -598,8 +599,8 @@ x:=0</label>
 			<nail x="102" y="-127"/>
 		</transition>
 		<transition>
-			<source ref="id1"/>
-			<target ref="id19"/>
+			<source ref="id17"/>
+			<target ref="id35"/>
 			<label kind="guard" x="-221" y="178">r&gt;=15</label>
 			<label kind="synchronisation" x="-221" y="161">anC!</label>
 			<label kind="assignment" x="-221" y="195">pos:=2</label>
@@ -608,8 +609,8 @@ x:=0</label>
 			<nail x="25" y="221"/>
 		</transition>
 		<transition>
-			<source ref="id1"/>
-			<target ref="id20"/>
+			<source ref="id17"/>
+			<target ref="id36"/>
 			<label kind="guard" x="-485" y="246">r&gt;=15</label>
 			<label kind="synchronisation" x="-485" y="229">anC!</label>
 			<label kind="assignment" x="-485" y="263">pos:=2</label>
@@ -618,248 +619,249 @@ x:=0</label>
 			<nail x="16" y="246"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id5"/>
+			<source ref="id19"/>
+			<target ref="id21"/>
 			<label kind="synchronisation" x="-484" y="119">alphaZ?</label>
 			<label kind="assignment" x="-476" y="136">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id2"/>
+			<source ref="id19"/>
+			<target ref="id18"/>
 			<label kind="synchronisation" x="-459" y="51">betaZ?</label>
 			<label kind="assignment" x="-442" y="68">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id2"/>
+			<source ref="id16"/>
+			<target ref="id18"/>
 			<label kind="synchronisation" x="-416" y="-195">betaZ?</label>
 			<label kind="assignment" x="-408" y="-178">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id1"/>
+			<source ref="id16"/>
+			<target ref="id17"/>
 			<label kind="synchronisation" x="-544" y="-238">gammaZ?</label>
 			<label kind="assignment" x="-535" y="-221">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id5"/>
+			<source ref="id20"/>
+			<target ref="id21"/>
 			<label kind="synchronisation" x="-442" y="-25">alphaZ?</label>
 			<label kind="assignment" x="-450" y="-8">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id1"/>
+			<source ref="id20"/>
+			<target ref="id17"/>
 			<label kind="synchronisation" x="-459" y="-110">gammaZ?</label>
 			<label kind="assignment" x="-425" y="-93">r:=0, act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id32"/>
-			<target ref="id47"/>
+			<source ref="id48"/>
+			<target ref="id63"/>
 			<label kind="synchronisation" x="663" y="93">activate?</label>
 			<label kind="assignment" x="782" y="127">r:=0, act:=1</label>
 		</transition>
 		<transition>
-			<source ref="id29"/>
-			<target ref="id32"/>
+			<source ref="id45"/>
+			<target ref="id48"/>
 			<label kind="guard" x="578" y="93">r&gt;=15</label>
 			<label kind="synchronisation" x="578" y="110">anB!</label>
 			<label kind="assignment" x="578" y="127">pos:=1</label>
 		</transition>
 		<transition>
-			<source ref="id31"/>
-			<target ref="id46"/>
+			<source ref="id47"/>
+			<target ref="id62"/>
 			<label kind="synchronisation" x="671" y="-110">activate?</label>
 			<label kind="assignment" x="663" y="-76">r:=0, act:=1</label>
 		</transition>
 		<transition>
-			<source ref="id30"/>
-			<target ref="id45"/>
+			<source ref="id46"/>
+			<target ref="id61"/>
 			<label kind="synchronisation" x="646" y="-204">activate?</label>
 			<label kind="assignment" x="654" y="-178">r:=0, act:=1</label>
 		</transition>
 		<transition>
-			<source ref="id27"/>
-			<target ref="id30"/>
+			<source ref="id43"/>
+			<target ref="id46"/>
 			<label kind="guard" x="569" y="-204">r&gt;=15</label>
 			<label kind="synchronisation" x="569" y="-187">anC!</label>
 			<label kind="assignment" x="569" y="-170">pos:=2</label>
 		</transition>
 		<transition>
-			<source ref="id28"/>
-			<target ref="id31"/>
+			<source ref="id44"/>
+			<target ref="id47"/>
 			<label kind="guard" x="569" y="-110">r&gt;=15</label>
 			<label kind="synchronisation" x="578" y="-93">anA!</label>
 			<label kind="assignment" x="569" y="-76">pos:=0</label>
 		</transition>
 		<transition>
-			<source ref="id25"/>
-			<target ref="id28"/>
+			<source ref="id41"/>
+			<target ref="id44"/>
 			<label kind="guard" x="391" y="33">r&gt;=10</label>
 			<label kind="synchronisation" x="391" y="8">befreieC!</label>
 			<label kind="assignment" x="391" y="17">r:=0</label>
 			<nail x="382" y="59"/>
 		</transition>
 		<transition>
-			<source ref="id23"/>
-			<target ref="id28"/>
+			<source ref="id39"/>
+			<target ref="id44"/>
 			<label kind="guard" x="442" y="-110">r&gt;=10</label>
 			<label kind="synchronisation" x="433" y="-93">befreieB!</label>
 			<label kind="assignment" x="450" y="-85">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id22"/>
-			<target ref="id27"/>
+			<source ref="id38"/>
+			<target ref="id43"/>
 			<label kind="guard" x="416" y="-204">r&gt;=10</label>
 			<label kind="synchronisation" x="416" y="-187">befreieA!</label>
 			<label kind="assignment" x="425" y="-170">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id24"/>
-			<target ref="id27"/>
+			<source ref="id40"/>
+			<target ref="id43"/>
 			<label kind="guard" x="467" y="-153">r&gt;=10</label>
 			<label kind="synchronisation" x="450" y="-136">befreieB!</label>
 			<label kind="assignment" x="459" y="-127">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id26"/>
-			<target ref="id29"/>
+			<source ref="id42"/>
+			<target ref="id45"/>
 			<label kind="guard" x="399" y="144">r&gt;=10</label>
 			<label kind="synchronisation" x="365" y="119">befreieC!</label>
 			<label kind="assignment" x="383" y="135">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id21"/>
-			<target ref="id29"/>
+			<source ref="id37"/>
+			<target ref="id45"/>
 			<label kind="guard" x="484" y="42">r&gt;=10</label>
 			<label kind="synchronisation" x="450" y="25">befreieA!</label>
 			<label kind="assignment" x="467" y="8">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id15"/>
-			<target ref="id39"/>
+			<source ref="id31"/>
+			<target ref="id55"/>
 			<label kind="synchronisation" x="119" y="-297">activate?</label>
 			<label kind="assignment" x="144" y="-280">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id16"/>
-			<target ref="id40"/>
+			<source ref="id32"/>
+			<target ref="id56"/>
 			<label kind="synchronisation" x="144" y="-204">activate?</label>
 			<label kind="assignment" x="154" y="-187">r:=0</label>
 			<nail x="204" y="-187"/>
 		</transition>
 		<transition>
-			<source ref="id17"/>
-			<target ref="id41"/>
+			<source ref="id33"/>
+			<target ref="id57"/>
 			<label kind="synchronisation" x="127" y="-127">activate?</label>
 			<label kind="assignment" x="144" y="-110">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id18"/>
-			<target ref="id42"/>
+			<source ref="id34"/>
+			<target ref="id58"/>
 			<label kind="synchronisation" x="144" y="-25">activate?</label>
 			<label kind="assignment" x="154" y="-8">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id20"/>
-			<target ref="id44"/>
+			<source ref="id36"/>
+			<target ref="id60"/>
 			<label kind="synchronisation" x="136" y="144">activate?</label>
 			<label kind="assignment" x="145" y="161">r:=0</label>
 			<nail x="161" y="161"/>
 			<nail x="212" y="161"/>
 		</transition>
 		<transition>
-			<source ref="id19"/>
-			<target ref="id43"/>
+			<source ref="id35"/>
+			<target ref="id59"/>
 			<label kind="synchronisation" x="127" y="59">activate?</label>
 			<label kind="assignment" x="154" y="76">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id11"/>
-			<target ref="id17"/>
+			<source ref="id27"/>
+			<target ref="id33"/>
 			<label kind="guard" x="-8" y="-110">r&gt;=5</label>
 			<label kind="synchronisation" x="34" y="-110">anB!</label>
 		</transition>
 		<transition>
-			<source ref="id12"/>
-			<target ref="id18"/>
+			<source ref="id28"/>
+			<target ref="id34"/>
 			<label kind="guard" x="-8" y="-25">r&gt;=5</label>
 			<label kind="synchronisation" x="34" y="-25">anB!</label>
 		</transition>
 		<transition>
-			<source ref="id13"/>
-			<target ref="id19"/>
+			<source ref="id29"/>
+			<target ref="id35"/>
 			<label kind="guard" x="-8" y="59">r&gt;=5</label>
 			<label kind="synchronisation" x="34" y="59">anC!</label>
 		</transition>
 		<transition>
-			<source ref="id14"/>
-			<target ref="id20"/>
+			<source ref="id30"/>
+			<target ref="id36"/>
 			<label kind="guard" x="-8" y="144">r&gt;=5</label>
 			<label kind="synchronisation" x="34" y="144">anC!</label>
 		</transition>
 		<transition>
-			<source ref="id10"/>
-			<target ref="id16"/>
+			<source ref="id26"/>
+			<target ref="id32"/>
 			<label kind="guard" x="0" y="-204">r&gt;=5</label>
 			<label kind="synchronisation" x="42" y="-204">anA!</label>
 		</transition>
 		<transition>
-			<source ref="id9"/>
-			<target ref="id15"/>
+			<source ref="id25"/>
+			<target ref="id31"/>
 			<label kind="guard" x="0" y="-297">r&gt;=5</label>
 			<label kind="synchronisation" x="42" y="-297">anA!</label>
 		</transition>
 		<transition>
-			<source ref="id8"/>
-			<target ref="id10"/>
+			<source ref="id24"/>
+			<target ref="id26"/>
 			<label kind="assignment" x="-135" y="-204">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id8"/>
-			<target ref="id9"/>
+			<source ref="id24"/>
+			<target ref="id25"/>
 			<label kind="assignment" x="-136" y="-255">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id7"/>
-			<target ref="id12"/>
+			<source ref="id23"/>
+			<target ref="id28"/>
 			<label kind="assignment" x="-135" y="-29">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id7"/>
-			<target ref="id11"/>
+			<source ref="id23"/>
+			<target ref="id27"/>
 			<label kind="assignment" x="-135" y="-72">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id14"/>
+			<source ref="id22"/>
+			<target ref="id30"/>
 			<label kind="assignment" x="-135" y="140">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id13"/>
+			<source ref="id22"/>
+			<target ref="id29"/>
 			<label kind="assignment" x="-110" y="93">r:=0</label>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id6"/>
+			<source ref="id19"/>
+			<target ref="id22"/>
 			<label kind="synchronisation" x="-347" y="102">gamma?</label>
 			<label kind="assignment" x="-347" y="119">act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id7"/>
+			<source ref="id20"/>
+			<target ref="id23"/>
 			<label kind="synchronisation" x="-347" y="-68">beta?</label>
 			<label kind="assignment" x="-347" y="-51">act:=2</label>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id8"/>
+			<source ref="id16"/>
+			<target ref="id24"/>
 			<label kind="synchronisation" x="-289" y="-238">alpha?</label>
 			<label kind="assignment" x="-289" y="-221">act:=2</label>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
+// Roboter
 R1 = Roboter(act1, pos1, r1, einsAnA, einsAnB, einsAnC, alpha1, beta1, gamma1, alphaZ1, betaZ1, gammaZ1, activate1);
 R2 = Roboter(act2, pos2, r2, zweiAnA, zweiAnB, zweiAnC, alpha2, beta2, gamma2, alphaZ2, betaZ2, gammaZ2, activate2);
 R3 = Roboter(act3, pos3, r3, dreiAnA, dreiAnB, dreiAnC, alpha3, beta3, gamma3, alphaZ3, betaZ3, gammaZ3, activate3);
@@ -869,19 +871,24 @@ fertigungsstationA = Fertigungsstation(AWerkstuecke);
 queueA = FStationQueue(einsAnA, zweiAnA, dreiAnA, belegeA);
 ladeplatzA = FStationLadeplatz(belegeA, befreieA);
 
-// Fertigungsstation B
+// TODO Fertigungsstation B
 fertigungsstationB = Fertigungsstation(BWerkstuecke);
+
+// TODO Fertigungsstation C
 fertigungsstationC = Fertigungsstation(CWerkstuecke);
 
-// Scheduler
-// scheduler = SchedulerDummy();
+// TODO Scheduler
+scheduler = SchedulerDummy();
 
 // List one or more processes to be composed into a system.
-system R1,R2,R3,
+system 
+    R1,
+    R2,
+    R3,
     fertigungsstationA,
-    queueA,
     fertigungsstationB,
     fertigungsstationC,
+    queueA,
     scheduler;
     </system>
 	<queries>
