@@ -19,415 +19,230 @@ chan einsAnA, einsAnB, einsAnC, zweiAnA, zweiAnB, zweiAnC, dreiAnA, dreiAnB, dre
 chan belegeA, belegeB, belegeC, befreieA, befreieB, befreieC;
 chan activate1, activate2, activate3;
 chan alpha1, beta1, gamma1, alphaZ1, betaZ1, gammaZ1, alpha2, beta2, gamma2, alphaZ2, betaZ2, gammaZ2, alpha3, beta3, gamma3, alphaZ3, betaZ3, gammaZ3;
+// Fertigungsstation
+int AWerkstuecke, BWerkstuecke, CWerkstuecke;
+int werkstueckeMax=10;
+int werkstueckeProd=0;
 </declaration>
 	<template>
-		<name x="9" y="9">Scheduler</name>
-		<declaration>// Place local declarations here.
-clock Uhr;
-</declaration>
-		<location id="id0" x="-1122" y="-323">
+		<name>Fertigungsstation</name>
+		<parameter>int &amp;werkstuecke</parameter>
+		<declaration>clock x;</declaration>
+		<location id="id0" x="0" y="0">
+			<name x="-85" y="-34">produzierend</name>
+			<label kind="invariant" x="-42" y="17">x&lt;=50</label>
+		</location>
+		<location id="id1" x="0" y="-119">
+			<name x="-10" y="-153">inaktiv</name>
+		</location>
+		<location id="id2" x="-221" y="0">
+			<name x="-246" y="-34">initialize</name>
 			<committed/>
 		</location>
-		<location id="id1" x="-382" y="-221">
-			<label kind="invariant" x="-365" y="-246">cProduce &gt; 0</label>
-			<committed/>
-		</location>
-		<location id="id2" x="-382" y="-34">
-			<committed/>
-		</location>
-		<location id="id3" x="-382" y="68">
-			<committed/>
-		</location>
-		<location id="id4" x="-382" y="255">
-			<committed/>
-		</location>
-		<location id="id5" x="-382" y="348">
-			<committed/>
-		</location>
-		<location id="id6" x="-382" y="535">
-			<committed/>
-		</location>
-		<location id="id7" x="-1122" y="68">
-			<committed/>
-		</location>
-		<location id="id8" x="-1122" y="348">
-			<committed/>
-		</location>
-		<location id="id9" x="-1122" y="-221">
-			<label kind="invariant" x="-1105" y="-246">bProduce &gt; 0</label>
-			<committed/>
-		</location>
-		<location id="id10" x="-1122" y="-34">
-			<committed/>
-		</location>
-		<location id="id11" x="-1122" y="255">
-			<committed/>
-		</location>
-		<location id="id12" x="-1122" y="535">
-			<committed/>
-		</location>
-		<location id="id13" x="-1895" y="77">
-			<committed/>
-		</location>
-		<location id="id14" x="-1895" y="357">
-			<committed/>
-		</location>
-		<location id="id15" x="-1895" y="-212">
-			<label kind="invariant" x="-1989" y="-237">aProduce &gt; 0</label>
-			<committed/>
-		</location>
-		<location id="id16" x="-1895" y="-25">
-			<committed/>
-		</location>
-		<location id="id17" x="-1895" y="263">
-			<committed/>
-		</location>
-		<location id="id18" x="-1895" y="544">
-			<committed/>
-		</location>
-		<init ref="id0"/>
-		<transition>
-			<source ref="id14"/>
-			<target ref="id0"/>
-			<label kind="guard" x="-1946" y="671">Uhr&gt;=10?</label>
-			<label kind="assignment" x="-1946" y="688">Uhr:=0</label>
-			<nail x="-1572" y="357"/>
-			<nail x="-1572" y="663"/>
-			<nail x="-2286" y="663"/>
-			<nail x="-2286" y="-450"/>
-		</transition>
-		<transition>
-			<source ref="id18"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="-2217" y="544">Uhr:=0</label>
-			<nail x="-2235" y="544"/>
-			<nail x="-2235" y="-399"/>
-		</transition>
-		<transition>
-			<source ref="id17"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="-2200" y="263">Uhr:=0</label>
-			<nail x="-2218" y="263"/>
-			<nail x="-2218" y="-374"/>
-		</transition>
-		<transition>
-			<source ref="id16"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="-2175" y="-25">Uhr:=0</label>
-			<nail x="-2193" y="-25"/>
-			<nail x="-2193" y="-348"/>
-		</transition>
-		<transition>
-			<source ref="id8"/>
-			<target ref="id0"/>
-			<label kind="guard" x="-1139" y="620">Uhr&gt;=10?</label>
-			<label kind="assignment" x="-1139" y="637">Uhr:=0</label>
-			<nail x="-790" y="348"/>
-			<nail x="-790" y="612"/>
-			<nail x="-1496" y="612"/>
-			<nail x="-1496" y="-263"/>
-		</transition>
+		<init ref="id2"/>
 		<transition>
 			<source ref="id0"/>
-			<target ref="id15"/>
-			<nail x="-1895" y="-323"/>
-		</transition>
-		<transition>
-			<source ref="id12"/>
-			<target ref="id0"/>
-			<nail x="-1479" y="535"/>
-			<nail x="-1479" y="-221"/>
-		</transition>
-		<transition>
-			<source ref="id11"/>
-			<target ref="id0"/>
-			<nail x="-1453" y="255"/>
-			<nail x="-1453" y="-212"/>
-		</transition>
-		<transition>
-			<source ref="id10"/>
-			<target ref="id0"/>
-			<nail x="-1419" y="-34"/>
-			<nail x="-1419" y="-204"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id9"/>
-		</transition>
-		<transition>
-			<source ref="id6"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="-569" y="535">Uhr:=0</label>
-			<nail x="-714" y="535"/>
-			<nail x="-714" y="-272"/>
-		</transition>
-		<transition>
-			<source ref="id4"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="-569" y="263">Uhr:=0</label>
-			<nail x="-697" y="255"/>
-			<nail x="-697" y="-280"/>
+			<target ref="id1"/>
+			<label kind="guard" x="8" y="-76">werkstueckeProd &gt;= werkstueckeMax</label>
 		</transition>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id0"/>
-			<label kind="assignment" x="-569" y="-34">Uhr:=0</label>
-			<nail x="-680" y="-34"/>
-			<nail x="-680" y="-306"/>
+			<label kind="assignment" x="-186" y="0">x:=0,
+werkstuecke:=0</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="119" y="-17">x&gt;=20 &amp;&amp; werkstueckeProd &lt; werkstueckeMax</label>
+			<label kind="assignment" x="119" y="0">werkstuecke++,
+werkstueckeProd++,
+x:=0</label>
+			<nail x="110" y="34"/>
+			<nail x="110" y="-34"/>
+		</transition>
+	</template>
+	<template>
+		<name>FStationQueue</name>
+		<parameter>chan &amp;add1, chan &amp;add2, chan &amp;add3, chan &amp;belege</parameter>
+		<location id="id3" x="-535" y="-127">
+			<name x="-527" y="-161">empty</name>
+		</location>
+		<location id="id4" x="-552" y="-246">
+			<name x="-569" y="-280">nur1</name>
+		</location>
+		<location id="id5" x="-416" y="-93">
+			<name x="-399" y="-101">nur2</name>
+		</location>
+		<location id="id6" x="-654" y="-51">
+			<name x="-688" y="-42">nur3</name>
+		</location>
+		<location id="id7" x="-348" y="-272">
+			<name x="-358" y="-306">erst1dann2</name>
+		</location>
+		<location id="id8" x="-671" y="-178">
+			<name x="-731" y="-212">erst1dann3</name>
+		</location>
+		<location id="id9" x="-416" y="-212">
+			<name x="-442" y="-246">erst2dann1</name>
+		</location>
+		<location id="id10" x="-501" y="102">
+			<name x="-484" y="85">erst2dann3</name>
+		</location>
+		<location id="id11" x="-765" y="-212">
+			<name x="-799" y="-246">erst3dann1</name>
+		</location>
+		<location id="id12" x="-510" y="0">
+			<name x="-552" y="17">erst3dann2</name>
+		</location>
+		<init ref="id3"/>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-748" y="-127">add1?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-688" y="-255">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-663" y="-161">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id4"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-374" y="-195">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-637" y="17">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-510" y="-59">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-578" y="-42">add2?</label>
 		</transition>
 		<transition>
 			<source ref="id5"/>
-			<target ref="id0"/>
-			<label kind="guard" x="76" y="17">Uhr&gt;=10?</label>
-			<label kind="assignment" x="76" y="34">Uhr:=0</label>
-			<nail x="68" y="348"/>
-			<nail x="68" y="-399"/>
-			<nail x="-799" y="-399"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-459" y="0">add3?</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-459" y="-187">add1?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-663" y="-221">add3?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-501" y="-280">add2?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-612" y="-212">belege!</label>
+			<nail x="-569" y="-187"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-484" y="-153">belege!</label>
+			<nail x="-476" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-578" y="-93">belege!</label>
+			<nail x="-586" y="-76"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-629" y="-127">add3?</label>
+			<nail x="-629" y="-102"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id5"/>
-			<label kind="guard" x="-51" y="144">Uhr&gt;=2?</label>
-			<nail x="-59" y="68"/>
-			<nail x="-59" y="263"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id3"/>
-			<label kind="guard" x="-51" y="-161">Uhr&gt;=1?</label>
-			<nail x="-59" y="-221"/>
-			<nail x="-59" y="-59"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id2"/>
-			<label kind="guard" x="-195" y="-127">gamma3!</label>
-			<label kind="synchronisation" x="-195" y="-144">x3==0 &amp;&amp; beiC3;</label>
-			<nail x="-195" y="-127"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id2"/>
-			<label kind="guard" x="-374" y="-127">gamma2!</label>
-			<label kind="synchronisation" x="-374" y="-144">x2==0 &amp;&amp; beiC2</label>
-			<nail x="-382" y="-85"/>
-		</transition>
-		<transition>
-			<source ref="id1"/>
-			<target ref="id2"/>
-			<label kind="guard" x="-620" y="-136">gamma1!</label>
-			<label kind="synchronisation" x="-663" y="-153">x1==0 &amp;&amp; beiC1</label>
-			<nail x="-561" y="-136"/>
-			<nail x="-442" y="-68"/>
-		</transition>
-		<transition>
-			<source ref="id0"/>
-			<target ref="id1"/>
-			<nail x="-382" y="-323"/>
+			<label kind="synchronisation" x="-501" y="-102">add2?</label>
+			<nail x="-493" y="-102"/>
 		</transition>
 		<transition>
 			<source ref="id3"/>
 			<target ref="id4"/>
-			<label kind="guard" x="-195" y="162">gamma3!</label>
-			<label kind="synchronisation" x="-195" y="145">standby3 &amp;&amp; beiC3;</label>
-			<nail x="-195" y="162"/>
+			<label kind="synchronisation" x="-535" y="-229">add1?</label>
+			<nail x="-535" y="-187"/>
 		</transition>
+	</template>
+	<template>
+		<name>FStationLadeplatz</name>
+		<parameter>chan &amp;belege, chan &amp;befreie</parameter>
+		<location id="id13" x="-7" y="42">
+			<name x="8" y="25">frei</name>
+		</location>
+		<location id="id14" x="-8" y="-93">
+			<name x="9" y="-101">belegt</name>
+		</location>
+		<init ref="id13"/>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id4"/>
-			<label kind="guard" x="-374" y="162">gamma2!</label>
-			<label kind="synchronisation" x="-374" y="145">standby2 &amp;&amp; beiC2;</label>
-			<nail x="-382" y="204"/>
-		</transition>
-		<transition>
-			<source ref="id3"/>
-			<target ref="id4"/>
-			<label kind="guard" x="-620" y="153">gamma1!</label>
-			<label kind="synchronisation" x="-680" y="136">standby1 &amp;&amp; beiC1;</label>
-			<nail x="-561" y="153"/>
-			<nail x="-442" y="221"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id6"/>
-			<label kind="guard" x="-195" y="442">gammaZ3!</label>
-			<label kind="synchronisation" x="-195" y="425">standby3;</label>
-			<nail x="-195" y="442"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id6"/>
-			<label kind="guard" x="-374" y="442">gammaZ2!</label>
-			<label kind="synchronisation" x="-374" y="425">standby2;</label>
-			<nail x="-382" y="484"/>
-		</transition>
-		<transition>
-			<source ref="id5"/>
-			<target ref="id6"/>
-			<label kind="guard" x="-620" y="433">gammaZ1!</label>
-			<label kind="synchronisation" x="-620" y="416">standby1;</label>
-			<nail x="-561" y="433"/>
-			<nail x="-442" y="501"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id8"/>
-			<label kind="guard" x="-791" y="144">Uhr&gt;=2?</label>
-			<nail x="-799" y="68"/>
-			<nail x="-799" y="263"/>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id7"/>
-			<label kind="guard" x="-791" y="-161">Uhr&gt;=1?</label>
-			<nail x="-799" y="-221"/>
-			<nail x="-799" y="-59"/>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id10"/>
-			<label kind="guard" x="-935" y="-127">beta3!</label>
-			<label kind="synchronisation" x="-935" y="-144">x3==0 &amp;&amp; beiB3;</label>
-			<nail x="-935" y="-127"/>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id10"/>
-			<label kind="guard" x="-1114" y="-127">beta2!</label>
-			<label kind="synchronisation" x="-1113" y="-144">x2==0 &amp;&amp; beiB2</label>
-			<nail x="-1122" y="-85"/>
-		</transition>
-		<transition>
-			<source ref="id9"/>
-			<target ref="id10"/>
-			<label kind="guard" x="-1360" y="-136">beta1!</label>
-			<label kind="synchronisation" x="-1403" y="-153">x1==0 &amp;&amp; beiB1</label>
-			<nail x="-1301" y="-136"/>
-			<nail x="-1182" y="-68"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id11"/>
-			<label kind="guard" x="-935" y="162">beta3!</label>
-			<label kind="synchronisation" x="-935" y="145">standby3 &amp;&amp; beiB3;</label>
-			<nail x="-935" y="162"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id11"/>
-			<label kind="guard" x="-1114" y="162">beta2!</label>
-			<label kind="synchronisation" x="-1114" y="145">standby2 &amp;&amp; beiB2;</label>
-			<nail x="-1122" y="204"/>
-		</transition>
-		<transition>
-			<source ref="id7"/>
-			<target ref="id11"/>
-			<label kind="guard" x="-1360" y="153">beta1!</label>
-			<label kind="synchronisation" x="-1420" y="136">standby1 &amp;&amp; beiB1;</label>
-			<nail x="-1301" y="153"/>
-			<nail x="-1182" y="221"/>
-		</transition>
-		<transition>
-			<source ref="id8"/>
-			<target ref="id12"/>
-			<label kind="guard" x="-935" y="442">betaZ3!</label>
-			<label kind="synchronisation" x="-935" y="425">standby3;</label>
-			<nail x="-935" y="442"/>
-		</transition>
-		<transition>
-			<source ref="id8"/>
-			<target ref="id12"/>
-			<label kind="guard" x="-1114" y="442">betaZ2!</label>
-			<label kind="synchronisation" x="-1114" y="425">standby2;</label>
-			<nail x="-1122" y="484"/>
-		</transition>
-		<transition>
-			<source ref="id8"/>
-			<target ref="id12"/>
-			<label kind="guard" x="-1368" y="433">gammaZ1!</label>
-			<label kind="synchronisation" x="-1368" y="416">standby1;</label>
-			<nail x="-1301" y="433"/>
-			<nail x="-1182" y="501"/>
+			<source ref="id14"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-93" y="-34">befreie?</label>
+			<nail x="-34" y="-34"/>
 		</transition>
 		<transition>
 			<source ref="id13"/>
 			<target ref="id14"/>
-			<label kind="guard" x="-1564" y="153">Uhr&gt;=2?</label>
-			<nail x="-1572" y="77"/>
-			<nail x="-1572" y="272"/>
+			<label kind="synchronisation" x="34" y="-42">belege?</label>
+			<nail x="25" y="-34"/>
+		</transition>
+	</template>
+	<template>
+		<name>SchedulerDummy</name>
+		<location id="id15" x="0" y="0">
+		</location>
+		<init ref="id15"/>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id15"/>
+			<label kind="guard" x="119" y="-25">BWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="0">BWerkstuecke--</label>
+			<nail x="102" y="34"/>
+			<nail x="102" y="-34"/>
 		</transition>
 		<transition>
 			<source ref="id15"/>
-			<target ref="id13"/>
-			<label kind="guard" x="-1564" y="-152">Uhr&gt;=1?</label>
-			<nail x="-1572" y="-212"/>
-			<nail x="-1572" y="-50"/>
+			<target ref="id15"/>
+			<label kind="guard" x="119" y="68">CWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="93">CWerkstuecke--</label>
+			<nail x="102" y="127"/>
+			<nail x="102" y="59"/>
 		</transition>
 		<transition>
 			<source ref="id15"/>
-			<target ref="id16"/>
-			<label kind="guard" x="-1708" y="-118">alpha3!</label>
-			<label kind="synchronisation" x="-1708" y="-135">x3==0 &amp;&amp; beiA3;</label>
-			<nail x="-1708" y="-118"/>
-		</transition>
-		<transition>
-			<source ref="id15"/>
-			<target ref="id16"/>
-			<label kind="guard" x="-1887" y="-118">alpha2!</label>
-			<label kind="synchronisation" x="-1887" y="-135">x2==0 &amp;&amp; beiA2</label>
-			<nail x="-1895" y="-76"/>
-		</transition>
-		<transition>
-			<source ref="id15"/>
-			<target ref="id16"/>
-			<label kind="guard" x="-2133" y="-127">alpha1!</label>
-			<label kind="synchronisation" x="-2176" y="-144">x1==0 &amp;&amp; beiA1</label>
-			<nail x="-2074" y="-127"/>
-			<nail x="-1955" y="-59"/>
-		</transition>
-		<transition>
-			<source ref="id13"/>
-			<target ref="id17"/>
-			<label kind="guard" x="-1708" y="171">alpha3!</label>
-			<label kind="synchronisation" x="-1708" y="154">standby3 &amp;&amp; beiA3;</label>
-			<nail x="-1708" y="171"/>
-		</transition>
-		<transition>
-			<source ref="id13"/>
-			<target ref="id17"/>
-			<label kind="guard" x="-1887" y="171">alpha2!</label>
-			<label kind="synchronisation" x="-1887" y="154">standby2 &amp;&amp; beiA2;</label>
-			<nail x="-1895" y="213"/>
-		</transition>
-		<transition>
-			<source ref="id13"/>
-			<target ref="id17"/>
-			<label kind="guard" x="-2133" y="162">alpha1!</label>
-			<label kind="synchronisation" x="-2193" y="145">standby1 &amp;&amp; beiA1;</label>
-			<nail x="-2074" y="162"/>
-			<nail x="-1955" y="230"/>
-		</transition>
-		<transition>
-			<source ref="id14"/>
-			<target ref="id18"/>
-			<label kind="guard" x="-1708" y="451">alphaZ3!</label>
-			<label kind="synchronisation" x="-1708" y="434">standby3;</label>
-			<nail x="-1708" y="451"/>
-		</transition>
-		<transition>
-			<source ref="id14"/>
-			<target ref="id18"/>
-			<label kind="guard" x="-1887" y="451">alphaZ2!</label>
-			<label kind="synchronisation" x="-1887" y="434">standby2;</label>
-			<nail x="-1895" y="493"/>
-		</transition>
-		<transition>
-			<source ref="id14"/>
-			<target ref="id18"/>
-			<label kind="guard" x="-2133" y="442">alphaZ1!</label>
-			<label kind="synchronisation" x="-2133" y="425">standby1;</label>
-			<nail x="-2074" y="442"/>
-			<nail x="-1955" y="510"/>
+			<target ref="id15"/>
+			<label kind="guard" x="119" y="-118">AWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="-93">AWerkstuecke--</label>
+			<nail x="102" y="-59"/>
+			<nail x="102" y="-127"/>
 		</transition>
 	</template>
   <template>
@@ -1048,8 +863,26 @@ clock Uhr;
 R1 = Roboter(act1, pos1, r1, einsAnA, einsAnB, einsAnC, alpha1, beta1, gamma1, alphaZ1, betaZ1, gammaZ1, activate1);
 R2 = Roboter(act2, pos2, r2, zweiAnA, zweiAnB, zweiAnC, alpha2, beta2, gamma2, alphaZ2, betaZ2, gammaZ2, activate2);
 R3 = Roboter(act3, pos3, r3, dreiAnA, dreiAnB, dreiAnC, alpha3, beta3, gamma3, alphaZ3, betaZ3, gammaZ3, activate3);
+
+// Fertigungsstation A
+fertigungsstationA = Fertigungsstation(AWerkstuecke);
+queueA = FStationQueue(einsAnA, zweiAnA, dreiAnA, belegeA);
+ladeplatzA = FStationLadeplatz(belegeA, befreieA);
+
+// Fertigungsstation B
+fertigungsstationB = Fertigungsstation(BWerkstuecke);
+fertigungsstationC = Fertigungsstation(CWerkstuecke);
+
+// Scheduler
+// scheduler = SchedulerDummy();
+
 // List one or more processes to be composed into a system.
-system R1,R2,R3,scheduler;
+system R1,R2,R3,
+    fertigungsstationA,
+    queueA,
+    fertigungsstationB,
+    fertigungsstationC,
+    scheduler;
     </system>
 	<queries>
 		<query>
