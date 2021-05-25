@@ -2,6 +2,25 @@
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
 	<declaration>// Place global declarations here.
+//pos=0 entspricht (zuletzt) an Station A, pos=1 entspricht (zuletzt) an Station B, pos=2 entspricht (zuletzt) an Station C,
+int[0,2] pos1;
+int[0,2] pos2;
+int[0,2] pos3;
+//act=0 entspricht standby, act=1 entspricht wird-entladen, act=2 enspricht allen anderen Aktivitäten
+int[0,2] act1;
+int[0,2] act2;
+int[0,2] act3;
+
+clock r1;
+clock r2;
+clock r3;
+
+chan einsAnA, einsAnB, einsAnC, zweiAnA, zweiAnB, zweiAnC, dreiAnA, dreiAnB, dreiAnC;
+chan belegeA, belegeB, belegeC, befreieA, befreieB, befreieC;
+chan activate1, activate2, activate3;
+chan alpha1, beta1, gamma1, alphaZ1, betaZ1, gammaZ1, alpha2, beta2, gamma2, alphaZ2, betaZ2, gammaZ2, alpha3, beta3, gamma3, alphaZ3, betaZ3, gammaZ3;
+
+// Fertigungsstation
 int AWerkstuecke, BWerkstuecke, CWerkstuecke;
 int werkstueckeMax=10;
 int werkstueckeProd=0;
@@ -46,29 +65,182 @@ x:=0</label>
 		</transition>
 	</template>
 	<template>
-		<name>SchedulerDummy</name>
-		<location id="id3" x="0" y="0">
+		<name>FStationQueue</name>
+		<parameter>chan &amp;add1, chan &amp;add2, chan &amp;add3, chan &amp;belege</parameter>
+		<location id="id3" x="-535" y="-127">
+			<name x="-527" y="-161">empty</name>
+		</location>
+		<location id="id4" x="-552" y="-246">
+			<name x="-569" y="-280">nur1</name>
+		</location>
+		<location id="id5" x="-416" y="-93">
+			<name x="-399" y="-101">nur2</name>
+		</location>
+		<location id="id6" x="-654" y="-51">
+			<name x="-688" y="-42">nur3</name>
+		</location>
+		<location id="id7" x="-348" y="-272">
+			<name x="-358" y="-306">erst1dann2</name>
+		</location>
+		<location id="id8" x="-671" y="-178">
+			<name x="-731" y="-212">erst1dann3</name>
+		</location>
+		<location id="id9" x="-416" y="-212">
+			<name x="-442" y="-246">erst2dann1</name>
+		</location>
+		<location id="id10" x="-501" y="102">
+			<name x="-484" y="85">erst2dann3</name>
+		</location>
+		<location id="id11" x="-765" y="-212">
+			<name x="-799" y="-246">erst3dann1</name>
+		</location>
+		<location id="id12" x="-510" y="0">
+			<name x="-552" y="17">erst3dann2</name>
 		</location>
 		<init ref="id3"/>
 		<transition>
-			<source ref="id3"/>
+			<source ref="id6"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-748" y="-127">add1?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-688" y="-255">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-663" y="-161">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id4"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-374" y="-195">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-637" y="17">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-510" y="-59">belege!</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-578" y="-42">add2?</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-459" y="0">add3?</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-459" y="-187">add1?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-663" y="-221">add3?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-501" y="-280">add2?</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
 			<target ref="id3"/>
+			<label kind="synchronisation" x="-612" y="-212">belege!</label>
+			<nail x="-569" y="-187"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-484" y="-153">belege!</label>
+			<nail x="-476" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-578" y="-93">belege!</label>
+			<nail x="-586" y="-76"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-629" y="-127">add3?</label>
+			<nail x="-629" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-501" y="-102">add2?</label>
+			<nail x="-493" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-535" y="-229">add1?</label>
+			<nail x="-535" y="-187"/>
+		</transition>
+	</template>
+	<template>
+		<name>FStationLadeplatz</name>
+		<parameter>chan &amp;belege, chan &amp;befreie</parameter>
+		<location id="id13" x="-7" y="42">
+			<name x="8" y="25">frei</name>
+		</location>
+		<location id="id14" x="-8" y="-93">
+			<name x="9" y="-101">belegt</name>
+		</location>
+		<init ref="id13"/>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-93" y="-34">befreie?</label>
+			<nail x="-34" y="-34"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="34" y="-42">belege?</label>
+			<nail x="25" y="-34"/>
+		</transition>
+	</template>
+	<template>
+		<name>SchedulerDummy</name>
+		<location id="id15" x="0" y="0">
+		</location>
+		<init ref="id15"/>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id15"/>
 			<label kind="guard" x="119" y="-25">BWerkstuecke&gt;0</label>
 			<label kind="assignment" x="119" y="0">BWerkstuecke--</label>
 			<nail x="102" y="34"/>
 			<nail x="102" y="-34"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id3"/>
+			<source ref="id15"/>
+			<target ref="id15"/>
 			<label kind="guard" x="119" y="68">CWerkstuecke&gt;0</label>
 			<label kind="assignment" x="119" y="93">CWerkstuecke--</label>
 			<nail x="102" y="127"/>
 			<nail x="102" y="59"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id3"/>
+			<source ref="id15"/>
+			<target ref="id15"/>
 			<label kind="guard" x="119" y="-118">AWerkstuecke&gt;0</label>
 			<label kind="assignment" x="119" y="-93">AWerkstuecke--</label>
 			<nail x="102" y="-59"/>
@@ -76,12 +248,22 @@ x:=0</label>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
+// Fertigungsstation A
 fertigungsstationA = Fertigungsstation(AWerkstuecke);
+queueA = FStationQueue(einsAnA, zweiAnA, dreiAnA, belegeA);
+ladeplatzA = FStationLadeplatz(belegeA, befreieA);
+
+
+// Fertigungsstation B
 fertigungsstationB = Fertigungsstation(BWerkstuecke);
 fertigungsstationC = Fertigungsstation(CWerkstuecke);
+
+// Scheduler
 scheduler = SchedulerDummy();
+
 // List one or more processes to be composed into a system.
 system fertigungsstationA,
+    queueA,
     fertigungsstationB,
     fertigungsstationC,
     scheduler;
