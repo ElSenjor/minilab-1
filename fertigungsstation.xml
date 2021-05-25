@@ -2,14 +2,14 @@
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
 <nta>
 	<declaration>// Place global declarations here.
-int aProduced, bProduced, cProduced;
-int maxProduce=3;
-int currProduced=0;
+int AWerkstuecke, BWerkstuecke, CWerkstuecke;
+int werkstueckeMax=3;
+int werkstueckeProd=0;
 clock x;
 </declaration>
 	<template>
 		<name>Fertigungsstation</name>
-		<parameter>int &amp;produced</parameter>
+		<parameter>int &amp;werkstuecke</parameter>
 		<location id="id0" x="0" y="0">
 			<name x="-85" y="-34">produzierend</name>
 			<label kind="invariant" x="-42" y="17">x&lt;=50</label>
@@ -20,52 +20,48 @@ clock x;
 		<location id="id2" x="-221" y="0">
 			<name x="-246" y="-34">initialize</name>
 		</location>
-		<location id="id3" x="144" y="0">
-			<name x="134" y="-34">produziere</name>
-		</location>
 		<init ref="id2"/>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id0"/>
-			<label kind="assignment" x="59" y="-68">x:=0</label>
-			<nail x="110" y="-42"/>
-			<nail x="42" y="-42"/>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="guard" x="8" y="-76">werkstueckeProd &gt;= werkstueckeMax</label>
 		</transition>
 		<transition>
 			<source ref="id2"/>
 			<target ref="id0"/>
 			<label kind="assignment" x="-186" y="0">x:=0,
-produced:=0</label>
+werkstuecke:=0</label>
 		</transition>
 		<transition>
 			<source ref="id0"/>
-			<target ref="id3"/>
-			<label kind="guard" x="59" y="51">x&gt;=20</label>
-			<label kind="assignment" x="17" y="68">produced:=produced+1,
-currProduced=currProduced+1</label>
-			<nail x="42" y="42"/>
-			<nail x="102" y="42"/>
+			<target ref="id0"/>
+			<label kind="guard" x="119" y="-17">x&gt;=20 &amp;&amp; werkstueckeProd &lt; werkstueckeMax</label>
+			<label kind="assignment" x="119" y="0">werkstuecke++,
+werkstueckeProd++,
+x:=0</label>
+			<nail x="110" y="34"/>
+			<nail x="110" y="-34"/>
 		</transition>
 	</template>
 	<template>
 		<name>SchedulerDummy</name>
-		<location id="id4" x="0" y="0">
+		<location id="id3" x="0" y="0">
 		</location>
-		<init ref="id4"/>
+		<init ref="id3"/>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
-			<label kind="guard" x="119" y="-25">aProduced&gt;0</label>
-			<label kind="assignment" x="119" y="0">aProduced=aProduced-1</label>
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="119" y="-25">AWerkstuecke&gt;0</label>
+			<label kind="assignment" x="119" y="0">AWerkstuecke--</label>
 			<nail x="102" y="34"/>
 			<nail x="102" y="-34"/>
 		</transition>
 	</template>
 	<system>// Place template instantiations here.
-fsA = Fertigungsstation(aProduced);
-sd = SchedulerDummy();
+fertigungsstationA = Fertigungsstation(AWerkstuecke);
+scheduler = SchedulerDummy();
 // List one or more processes to be composed into a system.
-system fsA, sd;
+system fertigungsstationA, scheduler;
     </system>
 	<queries>
 		<query>
